@@ -1,8 +1,8 @@
 interface Student { 
     id: number,
-    age: number, 
     name: string, 
     email: string, 
+    age: number, 
     course: string, 
     marks: number
 }
