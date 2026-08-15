@@ -5,9 +5,9 @@ async function main() {
     const rl = readline.createInterface({ input, output });
     const name = await rl.question("Enter your name: ");
     const age = Number(await rl.question("Enter your age: "));
-    const email = await rl.question("Enter your email");
-    const course = await rl.question("Enter your course");
-    const marks = Number(await rl.question("Enter your marks:"));
+    const email = await rl.question("Enter your email: ");
+    const course = await rl.question("Enter your course: ");
+    const marks = Number(await rl.question("Enter your marks: "));
     addStudent(name, age, email, course, marks);
     rl.close();
 }
