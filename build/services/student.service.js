@@ -127,4 +127,24 @@ export function filterStudents(course, result) {
         console.log(`ID: ${student.id}, Name: ${student.name}, Email: ${student.email}, Age: ${student.age}, Course: ${student.course}, Marks: ${student.marks}, Result: ${getResult(student.marks)}`);
     }
 }
+export function getStatistics() {
+    if (existingStudents.length === 0) {
+        console.log("No students found.");
+        return;
+    }
+    const totalStudents = existingStudents.length;
+    const allMarks = existingStudents.map(student => student.marks);
+    const sumMarks = allMarks.reduce((sum, marks) => sum + marks, 0);
+    const averageMarks = sumMarks / totalStudents;
+    const highestMarks = Math.max(...allMarks);
+    const lowestMarks = Math.min(...allMarks);
+    const passedStudents = existingStudents.filter(student => getResult(student.marks) === "Pass").length;
+    const failedStudents = existingStudents.filter(student => getResult(student.marks) === "Fail").length;
+    console.log(`Total Students: ${totalStudents}`);
+    console.log(`Average Marks: ${averageMarks}`);
+    console.log(`Highest Marks: ${highestMarks}`);
+    console.log(`Lowest Marks: ${lowestMarks}`);
+    console.log(`Passed Students: ${passedStudents}`);
+    console.log(`Failed Students: ${failedStudents}`);
+}
 //# sourceMappingURL=student.service.js.map
