@@ -107,4 +107,28 @@ existingStudents = existingStudents.filter(student => student.id !== id);
 console.log("Student deleted successfully:", student);
 }
 
- 
+ export function searchStudent(name: string,email:string,course:string):void{
+ const results= existingStudents.filter(student => student.name.toLowerCase().includes(name.toLowerCase()) || student.email.toLowerCase().includes(email.toLowerCase())|| student.course.toLowerCase().includes(course.toLowerCase()) );
+ if (results.length === 0){
+            console.log("Student not found")
+            return;
+        }
+    for (const student of results){
+         console.log(`ID: ${student.id}, Name: ${student.name}, Email: ${student.email}, Age: ${student.age}, Course: ${student.course}, Marks: ${student.marks}`);
+    }
+ }
+ export function filterStudents(course:string,result: "Pass" | "Fail"|""):void{
+    const results= existingStudents.filter(student =>{
+        const courseMatches = course === "" || student.course === course;
+        const resultMatches = result === "" || getResult(student.marks)===result;
+        return courseMatches && resultMatches
+    })
+     if (results.length === 0) {
+        console.log("No students found.");
+        return;
+    }
+
+    for (const student of results) {
+        console.log(`ID: ${student.id}, Name: ${student.name}, Email: ${student.email}, Age: ${student.age}, Course: ${student.course}, Marks: ${student.marks}, Result: ${getResult(student.marks)}`);
+    }
+ }
