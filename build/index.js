@@ -1,6 +1,6 @@
 import * as readline from "node:readline/promises";
 import { stdin as input, stdout as output } from "node:process";
-import { addStudent, deleteStudent, filterStudents, findStudent, getAllStudent, searchStudent, updateStudent } from "./services/student.service.js";
+import { addStudent, deleteStudent, filterStudents, findStudent, getAllStudent, getStatistics, searchStudent, updateStudent } from "./services/student.service.js";
 async function main() {
     const rl = readline.createInterface({ input, output });
     const name = await rl.question("Enter your name: ");
@@ -50,6 +50,8 @@ async function main() {
         const courseFilter = await rl.question("Filter by course: ");
         const resultFilter = await rl.question("Filter by result - Pass/Fail: ");
         filterStudents(courseFilter, resultFilter);
+        //statistics
+        getStatistics();
         rl.close();
     }
 }
