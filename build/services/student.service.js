@@ -147,4 +147,17 @@ export function getStatistics() {
     console.log(`Passed Students: ${passedStudents}`);
     console.log(`Failed Students: ${failedStudents}`);
 }
+export function sortStudent(field, direction) {
+    const sorted = [...existingStudents].sort((a, b) => {
+        if (field === "marks") {
+            return direction === "asc" ? a.marks - b.marks : b.marks - a.marks;
+        }
+        else {
+            return direction === "asc" ? a.name.localeCompare(b.name) : b.name.localeCompare(a.name);
+        }
+    });
+    for (const student of sorted) {
+        console.log(`ID: ${student.id}, Name: ${student.name} Marks: ${student.marks}`);
+    }
+}
 //# sourceMappingURL=student.service.js.map
