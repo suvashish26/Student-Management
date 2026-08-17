@@ -1,6 +1,6 @@
 import * as readline from "node:readline/promises";
 import { stdin as input, stdout as output } from "node:process";
-import { addStudent, deleteStudent, filterStudents, findStudent, getAllStudent, getStatistics, searchStudent, updateStudent } from "./services/student.service.js";
+import { addStudent, deleteStudent, filterStudents, findStudent, getAllStudent, getStatistics, searchStudent, sortStudent, updateStudent } from "./services/student.service.js";
 
 async function main() {
 const rl =readline.createInterface({input,output})
@@ -62,6 +62,19 @@ filterStudents(courseFilter, resultFilter as "Pass" | "Fail" | "");
 
 //statistics
 getStatistics()
+
+
+//sort
+const sortField = await rl.question("Sort by (marks/name): ");
+const sortDirection = await rl.question("Direction (asc/desc): ");
+
+if (sortField !== "marks" && sortField !== "name") {
+    console.log("Invalid sort field. Please enter 'marks' or 'name'.");
+} else if (sortDirection !== "asc" && sortDirection !== "desc") {
+    console.log("Invalid direction. Please enter 'asc' or 'desc'.");
+} else {
+    sortStudent(sortField, sortDirection);
+}
 rl.close();
 }
 }

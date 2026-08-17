@@ -7,4 +7,5 @@ export declare function deleteStudent(id: number): void;
 export declare function searchStudent(name: string, email: string, course: string): void;
 export declare function filterStudents(course: string, result: "Pass" | "Fail" | ""): void;
 export declare function getStatistics(): void;
+export declare function sortStudent(field: "marks" | "name", direction: "asc" | "desc"): void;
 //# sourceMappingURL=student.service.d.ts.map
