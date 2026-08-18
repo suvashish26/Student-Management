@@ -36,7 +36,13 @@ async function main() {
             case "3": {
                 const findIdInput = await rl.question("Enter student id to find: ");
                 const findId = Number(findIdInput);
-                findStudent(findId); // if findStudent handles its own printing (void)
+                const student = findStudent(findId);
+                if (student === undefined) {
+                    console.log("Student not found.");
+                }
+                else {
+                    console.log(`ID: ${student.id}, Name: ${student.name}, Email: ${student.email}, Age: ${student.age}, Course: ${student.course}, Marks: ${student.marks}`);
+                }
                 break;
             }
             case "4": {
